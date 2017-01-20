@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Categorias>
+  <Categoria id="3">
+    <Texto>SE.SEASONS</Texto>
+  </Categoria>
+  <Categoria id="4">
+    <Texto>FL.FLT APPLICATION</Texto>
+  </Categoria>
+  <Categoria id="11">
+    <Texto>BO.BLACKOUTS</Texto>
+  </Categoria>
+  <Categoria id="14">
+    <Texto>TR.TVL RESTRICTION</Texto>
+  </Categoria>
+  <Categoria id="15">
+    <Texto>SR.SALES RESTRICT</Texto>
+  </Categoria>
+</Categorias>
