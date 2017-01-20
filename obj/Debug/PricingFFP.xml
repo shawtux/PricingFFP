@@ -1,0 +1,82 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+PricingFFP
+</name>
+</assembly>
+<members>
+<member name="T:PricingFFP.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:PricingFFP.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:PricingFFP.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:PricingFFP.My.Resources.Resources.Categorias">
+<summary>
+  Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;Categorias&gt;
+  &lt;Categoria id=&quot;3&quot;&gt;
+    &lt;Texto&gt;SE.SEASONS&lt;/Texto&gt;
+  &lt;/Categoria&gt;
+  &lt;Categoria id=&quot;4&quot;&gt;
+    &lt;Texto&gt;FL.FLT APPLICATION&lt;/Texto&gt;
+  &lt;/Categoria&gt;
+  &lt;Categoria id=&quot;11&quot;&gt;
+    &lt;Texto&gt;BO.BLACKOUTS&lt;/Texto&gt;
+  &lt;/Categoria&gt;
+  &lt;Categoria id=&quot;15&quot;&gt;
+    &lt;Texto&gt;SR.SALES RESTRICT&lt;/Texto&gt;
+  &lt;/Categoria&gt;
+&lt;/Categorias&gt;
+.
+</summary>
+</member>
+<member name="M:PricingFFP.faredata.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+
+ </summary>
+ <param name="lineNum">numero de linea</param>
+ <param name="farebasis">farebasis</param>
+ <param name="owFare">oneway fare</param>
+ <param name="rtFare">round trip fare</param>
+ <param name="bookingClass">booking class</param>
+ <param name="penColumn">pen column</param>
+ <param name="notUsed">not used yet</param>
+ <param name="dateStr">date</param>
+ <param name="dayStr">days</param>
+ <param name="notUsed1">not used yet</param>
+ <param name="ap">ap</param>
+ <param name="notUsed2">not used yet</param>
+ <param name="minStay">min stay</param>
+ <param name="notUsed3">not used yet</param>
+ <param name="maxStay">max stay</param>
+ <param name="fColumn">F column</param>
+ <param name="rColumn">R column</param>
+</member>
+<member name="M:PricingFFP.faredata.CompareTo(PricingFFP.faredata)">
+ <summary>
+ If two faredatas are equal return 1, else 0
+ </summary>
+ <param name="other"></param>
+ <returns></returns>
+</member>
+<member name="M:PricingFFP.Utilities.getCleanFQN(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="input">texto de entrada de un FQN y determinar la ultima pagina en caso de haber MD excesivos</param>
+ <returns></returns>
+</member>
+</members>
+</doc>

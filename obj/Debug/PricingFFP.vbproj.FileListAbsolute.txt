@@ -1,0 +1,14 @@
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\bin\Debug\PricingFFP.exe.config
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\bin\Debug\PricingFFP.exe
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\bin\Debug\PricingFFP.pdb
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\bin\Debug\PricingFFP.xml
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.vbprojResolveAssemblyReference.cache
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.Form1.resources
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.Resources.resources
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.vbproj.GenerateResource.Cache
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.exe
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.xml
+c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.pdb
+C:\Users\Marcos Orrego\documents\visual studio 2015\Projects\PricingFFP\bin\Debug\Resources\Categorias.xml
+C:\Users\Marcos Orrego\documents\visual studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.vbproj.ResolveComReference.cache
+C:\Users\Marcos Orrego\documents\visual studio 2015\Projects\PricingFFP\bin\Debug\Robot FFP - Generador Script.xlsm
