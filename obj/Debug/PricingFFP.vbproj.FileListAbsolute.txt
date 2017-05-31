@@ -12,3 +12,17 @@ c:\users\marcos orrego\documents\visual studio 2015\Projects\PricingFFP\obj\Debu
 C:\Users\Marcos Orrego\documents\visual studio 2015\Projects\PricingFFP\bin\Debug\Resources\Categorias.xml
 C:\Users\Marcos Orrego\documents\visual studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.vbproj.ResolveComReference.cache
 C:\Users\Marcos Orrego\documents\visual studio 2015\Projects\PricingFFP\bin\Debug\Robot FFP - Generador Script.xlsm
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\bin\Debug\PricingFFP.exe.config
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.vbproj.ResolveComReference.cache
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.exe
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.xml
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.pdb
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\bin\Debug\Resources\Categorias.xml
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\bin\Debug\Robot FFP - Generador Script.xlsm
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\bin\Debug\PricingFFP.exe
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\bin\Debug\PricingFFP.pdb
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\bin\Debug\PricingFFP.xml
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.vbprojResolveAssemblyReference.cache
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.Form1.resources
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.Resources.resources
+C:\Users\3135472\Documents\Visual Studio 2015\Projects\PricingFFP\obj\Debug\PricingFFP.vbproj.GenerateResource.Cache

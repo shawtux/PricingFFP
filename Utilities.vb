@@ -9,8 +9,9 @@ Imports Microsoft.Office.Interop.Excel
 
 Public Class Utilities
     Private maxPageFinder As String = "^\s+PAGE\s+([0-9]+)/\s+([0-9]+)"
-    Dim parseoLineaTabla As String = "^([0-9]{2}(?#1st matches line number))\s([A-Z0-9]+(?#2nd match farebasis code))\s+([0-9.]+|\s{4,}(?#3rd matches amount rt))+\s{4,}([0-9.]+|\s{4,}(?#4th matches amount ow))\s([A-Z](?#5th matches class))\s+(-|\+|NRF(?#6th matches pen column))\s{1,2}([A-Z]|(?#7th matches empty column. saved just in case))([0-9]{2}[A-Z]{3}|\s+-(?#8th matches dates))\s+([A-Z][0-9]{2}[A-Z]{3}|[0-9]+|-(?#9th matches days))\s*(\+|)\s*([0-9]+|-(?#10th matches AP))(\+|(?#11th matches plus sign))\s*(-|[0-9]+|(?#12 matches min stay))(\+\s*|\s*)([0-9]{1,2}[M]|[0-9]{2,3}|-\s(?#13 matches max column))([A-Z]|\s)([A-Z])"
+    Dim parseoLineaTabla As String = "^([0-9]{2}(?#1st matches line number)\s|[0-9]{3})([A-Z0-9]+(?#2nd match farebasis code))\s+([0-9.]+|\s{4,}(?#3rd matches amount rt))+\s{4,}([0-9.]+|\s{4,}(?#4th matches amount ow))\s([A-Z](?#5th matches class))\s+(-|\+|NRF(?#6th matches pen column))\s{1,2}([A-Z]|(?#7th matches empty column. saved just in case))([0-9]{2}[A-Z]{3}|\s+-(?#8th matches dates))\s+([A-Z][0-9]{2}[A-Z]{3}|[0-9]+|-|(?#9th matches days))\s*(\+|)\s*([0-9]+|-(?#10th matches AP))(\+|(?#11th matches plus sign))\s*(-|[0-9]+|(?#12 matches min stay))(\+\s*|\s*)([0-9]{1,2}[M]|[0-9]{2,3}|-\s(?#13 matches max column))([A-Z]|\s)([A-Z])"
     Dim paginador As String = ""
+    Dim fqn As String = "FQN([0-9]{1,2})\*([0-9]{1,2}).*?(?=FQN|TRANSACTION CODE NOT SUPPORTED|^ NO MORE PAGE AVAILABLE)"
 
     ''' <summary>
     ''' 
@@ -111,7 +112,7 @@ Public Class Utilities
     Public Sub parseFQN(input As String, outputFile As String)
         Dim farearray As New List(Of faredata)
         Dim xmldoc As New XmlDocument
-        Dim fqn As String = "FQN([0-9]{1,2})\*([0-9]{1,2}).*?(?=FQN|TRANSACTION CODE NOT SUPPORTED)"
+
         Dim FTC As String = ".*FTC:\s*([A-Z0-9]+[\s\t]*)-.*"
 
         Dim options As RegexOptions = RegexOptions.Singleline Or RegexOptions.Multiline
@@ -465,14 +466,15 @@ Public Class Utilities
                 Console.WriteLine("FTC  not found")
             End If
             'Console.WriteLine("group read" & match.Groups(2).Value)
+            Console.WriteLine(farebasisRecord.farebasis & " " & farebasisRecord.OD & " " & farebasisRecord.bookingClass)
             farearray.Add(farebasisRecord)
         Next
 
 
 
-        Dim xlsWorkBook As Microsoft.Office.Interop.Excel.Workbook
-        Dim xlsWorkSheet As Microsoft.Office.Interop.Excel.Worksheet
-        Dim xls As New Microsoft.Office.Interop.Excel.Application
+        Dim xlsWorkBook As Workbook
+        Dim xlsWorkSheet As Worksheet
+        Dim xls As New Application
 
         Dim filename As String = outputFile
 
@@ -503,6 +505,55 @@ Public Class Utilities
             End If
             rownum1 = rownum1 + 1
         Next
+        Dim fqdPattern As String = "FQD.*?(PAGE (\d*)/\1|^FQD|^ NO MORE PAGE AVAILABLE)"
+        Dim fqnSubTablePattern As String = "^[0-9]{2}[A-Z]{3}[0-9]{2}\*\*.*?(PAGE|^ NO MORE PAGE AVAILABLE|^FQD)"
+        If farearray.Count = 0 Then
+            Dim farebasisRecord As New faredata
+            xlsWorkSheet.Range(xlsWorkSheet.Cells(rownum1 - 1, 1), xlsWorkSheet.Cells(rownum1 - 1, numElements)).Value = farebasisRecord.writeExcelRowHeader
+
+            Console.WriteLine("fareArray is 0")
+            For Each match As Match In Regex.Matches(input, fqdPattern, options)
+
+                'fqnSubTablPattern matches
+                '31MAY17**06MAY18/JJ CGHSCL/NSP;WH/TPM  1613/MPM  1935 /LOW
+                'LN FARE BASIS    OW   USD  RT   B PEN  DATES/DAYS   AP MIN MAXFR
+                '188ION98HAW     50000    100000 I  -  S  -     -   + -  -  365CR
+                '189COL99HAW     52000    104000 C  -  S  -     -   + -  -  365CR
+                '190CON99HAW     52000    104000 C  -  S  -     -   + -  -  365CR
+                '191DZL98HAW     52000    104000 D  -  S  -     -   + -  -  365CR
+                '192IZL98HAW     52000    104000 I  -  S  -     -   + -  -  365CR
+                '193JOL99HAW     52000    104000 J  -  S  -     -   + -  -  365CR
+                '194JON99HAW     52000    104000 J  -  S  -     -   + -  -  365CR
+                '195UZN98HAW     52000    104000 U  -  S  -     -   + -  -  365CR
+                '196ZZN98HAW     52000    104000 Z  -  S  -     -   + -  -  365CR
+                '197DZN98HAW     53000    106000 D  -  S  -     -   + -  -  365CR
+                '198IZN98HAW     53000    106000 I  -  S  -     -   + -  -  365CR
+                '199CZL99HAW     55000    110000 C  -  S  -     -   + -  -  365CR
+                '200CZN99HAW     55000    110000 C  -  S  -     -   + -  -  365CR
+                'MORE FARES EXIST - USE SUBSEQUENT ENTRY TO MODIFY
+
+                For Each matchSubTable As Match In Regex.Matches(match.Value, fqnSubTablePattern, options)
+
+                    Console.WriteLine("===============")
+                    Console.WriteLine(matchSubTable.Value)
+
+                    'odMatch hace match a
+                    '31MAY17**06MAY18/JJ CGHSCL/NSP;WH/TPM  1613/MPM  1935 /LOW
+                    Dim odMatch As Match = Regex.Match(matchSubTable.Value, "^[0-9]{2}[A-Z]{3}[0-9]{2}\*\*.*\s([A-Z]{6})/.*/([A-Z]+)")
+
+                    For Each matchTabla As Match In Regex.Matches(matchSubTable.Value, parseoLineaTabla, options)
+
+                        farebasisRecord = New faredata(matchTabla.Groups(1).Value, matchTabla.Groups(2).Value, matchTabla.Groups(3).Value, matchTabla.Groups(4).Value, matchTabla.Groups(5).Value, matchTabla.Groups(6).Value, matchTabla.Groups(7).Value, matchTabla.Groups(8).Value, matchTabla.Groups(9).Value, matchTabla.Groups(10).Value, matchTabla.Groups(11).Value, matchTabla.Groups(12).Value, matchTabla.Groups(13).Value, matchTabla.Groups(14).Value, matchTabla.Groups(15).Value, matchTabla.Groups(16).Value, matchTabla.Groups(17).Value, odMatch.Groups(1).Value)
+                        farebasisRecord.accountCode = odMatch.Groups(2).Value
+                        xlsWorkSheet.Range(xlsWorkSheet.Cells(rownum1, 1), xlsWorkSheet.Cells(rownum1, numElements)).Value = farebasisRecord.writeExcelRow
+
+                        rownum1 = rownum1 + 1
+                    Next
+                Next
+
+            Next
+
+        End If
 
         xlsWorkSheet.Cells.EntireColumn.WrapText = False
         xlsWorkSheet.Cells.EntireColumn.AutoFit()

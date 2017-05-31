@@ -7,24 +7,31 @@ Public Class Form1
     Sub populateFileList()
 
         CheckedListBox1.Items.Clear()
+        DataGridView1.Rows.Clear()
+
         Try
-            For Each filefound As String In My.Computer.FileSystem.GetFiles(appPath)
+        For Each filefound As String In My.Computer.FileSystem.GetFiles(appPath)
                 Dim extension As String = System.IO.Path.GetExtension(filefound)
 
                 If extension.ToLower = ".csv" Then
                     CheckedListBox1.Enabled = True
                     CheckedListBox1.Items.Add(System.IO.Path.GetFileName(filefound))
+
+                    DataGridView1.Rows.Add(False, Path.GetFileName(filefound), File.GetLastWriteTime(filefound))
+
                 End If
             Next
         Catch
             MessageBox.Show("Ruta no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             If CheckedListBox1.Items.Count = 0 Then
                 CheckedListBox1.Items.Add("ningun archivo encontrado")
+                DataGridView1.Rows.Add(False, "ningun archivo encontrado", "")
             End If
         End Try
 
-        If CheckedListBox1.Items.Count = 0 Then
+        If (CheckedListBox1.Items.Count = 0 Or DataGridView1.Rows.Count = 0) Then
             CheckedListBox1.Items.Add("ningun archivo encontrado")
+            'DataGridView1.Rows.Add(False, "ningun archivo encontrado", "")
         End If
 
     End Sub
@@ -33,7 +40,7 @@ Public Class Form1
         Dim directoryPath As String = ""
         ToolStripStatusLabel2.Text = "Ejecutando"
         If CheckedListBox1.CheckedItems.Count > 0 Then
-            If CheckedListBox1.Items.Count = 1 And CheckedListBox1.Items(1).ToString = "ningun archivo encontrado" Then
+            If CheckedListBox1.Items.Count = 1 And (CheckedListBox1.Items(1).ToString = "ningun archivo encontrado" Or DataGridView1.Rows(1).Cells("fileNameColumn").Value = "ningun archivo encontrado") Then
                 MsgBox("No se puede iniciar, no hay archivos a procesar")
             Else
 
@@ -66,11 +73,12 @@ Public Class Form1
 
 
                 Next
-                File.Delete(directoryPath & "\\salida.txt")
+                'File.Delete(directoryPath & "\\salida.txt")
 
             End If
         End If
         ToolStripStatusLabel2.Text = "Terminado"
+        MsgBox("Proceso Terminado", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -83,14 +91,25 @@ Public Class Form1
 
     Private Sub Form1_onload(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        txtBoxPath.Text = appPath
-        populateFileList()
+        'txtBoxPath.Text = appPath
+        'populateFileList()
 
     End Sub
+
+    Private Sub Form1_onshow(sender As Object, e As EventArgs) Handles MyBase.Shown
+        DataGridView1.AutoGenerateColumns = True
+
+        txtBoxPath.Text = appPath
+
+        populateFileList()
+    End Sub
+
     Private Sub txtBoxPath_TextChanged(sender As Object, e As EventArgs) Handles txtBoxPath.TextChanged
         If (txtBoxPath.Text <> Nothing) Then
             appPath = txtBoxPath.Text
             populateFileList()
         End If
     End Sub
+
+
 End Class

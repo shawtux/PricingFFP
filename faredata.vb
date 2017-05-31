@@ -133,6 +133,12 @@ Public Class faredata
         Me.R = rColumn
 
         Me.OD = od
+        Me.seasonsFrom = ""
+        Me.seasonsTo = ""
+
+    End Sub
+
+    Public Sub New()
 
     End Sub
 
