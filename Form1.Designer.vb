@@ -26,19 +26,15 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtBoxPath = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.chkColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.fileNameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.modifDateColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
-        Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -72,7 +68,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(352, 69)
+        Me.Button2.Location = New System.Drawing.Point(365, 51)
         Me.Button2.Margin = New System.Windows.Forms.Padding(1)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(122, 39)
@@ -80,19 +76,10 @@ Partial Class Form1
         Me.Button2.Text = "Seleccionar carpeta"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'CheckedListBox1
-        '
-        Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Location = New System.Drawing.Point(6, 30)
-        Me.CheckedListBox1.Margin = New System.Windows.Forms.Padding(1)
-        Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(337, 184)
-        Me.CheckedListBox1.TabIndex = 0
-        '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.DataGridView1)
         Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.CheckedListBox1)
         Me.GroupBox1.Location = New System.Drawing.Point(5, 56)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(1)
         Me.GroupBox1.Name = "GroupBox1"
@@ -102,14 +89,25 @@ Partial Class Form1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Seleccionar archivo(s) de entrada"
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(15, 17)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(343, 214)
+        Me.DataGridView1.TabIndex = 5
+        '
         'StatusStrip1
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(36, 36)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 314)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 339)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(0, 0, 6, 0)
-        Me.StatusStrip1.Size = New System.Drawing.Size(887, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(546, 22)
         Me.StatusStrip1.TabIndex = 4
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -125,46 +123,11 @@ Partial Class Form1
         Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(55, 17)
         Me.ToolStripStatusLabel2.Text = "Detenido"
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.chkColumn, Me.fileNameColumn, Me.modifDateColumn})
-        Me.DataGridView1.Location = New System.Drawing.Point(532, 69)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(343, 150)
-        Me.DataGridView1.TabIndex = 5
-        '
-        'chkColumn
-        '
-        Me.chkColumn.HeaderText = ""
-        Me.chkColumn.Name = "chkColumn"
-        Me.chkColumn.ReadOnly = True
-        Me.chkColumn.Width = 5
-        '
-        'fileNameColumn
-        '
-        Me.fileNameColumn.HeaderText = "Archivo"
-        Me.fileNameColumn.Name = "fileNameColumn"
-        Me.fileNameColumn.ReadOnly = True
-        Me.fileNameColumn.Width = 68
-        '
-        'modifDateColumn
-        '
-        Me.modifDateColumn.HeaderText = "Ultima fecha modificación"
-        Me.modifDateColumn.Name = "modifDateColumn"
-        Me.modifDateColumn.ReadOnly = True
-        Me.modifDateColumn.Width = 140
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(887, 336)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.ClientSize = New System.Drawing.Size(546, 361)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txtBoxPath)
@@ -172,11 +135,11 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Margin = New System.Windows.Forms.Padding(1)
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "Parser Pricing FFP"
         Me.GroupBox1.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -185,7 +148,6 @@ Partial Class Form1
     Friend WithEvents Button1 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Button2 As Button
-    Friend WithEvents CheckedListBox1 As CheckedListBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents txtBoxPath As TextBox
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
@@ -193,7 +155,4 @@ Partial Class Form1
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents chkColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents fileNameColumn As DataGridViewTextBoxColumn
-    Friend WithEvents modifDateColumn As DataGridViewTextBoxColumn
 End Class

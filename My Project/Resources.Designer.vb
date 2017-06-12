@@ -72,11 +72,13 @@ Namespace My.Resources
         '''  &lt;Categoria id=&quot;11&quot;&gt;
         '''    &lt;Texto&gt;BO.BLACKOUTS&lt;/Texto&gt;
         '''  &lt;/Categoria&gt;
+        '''  &lt;Categoria id=&quot;14&quot;&gt;
+        '''    &lt;Texto&gt;TR.TVL RESTRICTION&lt;/Texto&gt;
+        '''  &lt;/Categoria&gt;
         '''  &lt;Categoria id=&quot;15&quot;&gt;
         '''    &lt;Texto&gt;SR.SALES RESTRICT&lt;/Texto&gt;
         '''  &lt;/Categoria&gt;
-        '''&lt;/Categorias&gt;
-        '''.
+        '''&lt;/Categorias&gt;.
         '''</summary>
         Friend ReadOnly Property Categorias() As String
             Get
